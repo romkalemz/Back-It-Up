@@ -1,5 +1,5 @@
 CC = gcc
-FILES = main.c
+FILES = main.c traverseFiles.c
 FLAGS = -Wall -Werror -pthread
 
 backup: $(FILES)
