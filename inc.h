@@ -18,6 +18,12 @@
 #include <math.h>
 #include <dirent.h>
 
-// MAIN THREAD FUNCTION DECLARATIONS
+// MAIN THREAD FUNCTIONS
 int checkArgInput(int, char**);
-int checkBackupDir();
+int checkBackupDir(int);
+
+// TRAVERSE FILES FUNCTIONS
+void traverse(char* path);
+int isFile(char* pathname);
+int isDirectory(char* pathname);
+int checkPermissions(char* pathname);
