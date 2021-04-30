@@ -19,13 +19,23 @@ int main(int argc, char **argv) {
         // restore_backups();
     }
 
-
     // CREATE A THREAD TO WAIT FOR TRAVERSING + BACKING UP THREADS TO FINISH
-    traverse(NULL); // traverse CWD and other directories in CWD
+    printf("[NOTE]     backup starting...\n");
+    pthread_t mainThread;
+    int ret;
+    char *initPath = NULL;
+    if((ret = pthread_create(&mainThread, NULL, traverse, &initPath)) != 0) {
+        fprintf(stderr, "ERROR - %d (%s) -\n", ret, strerror(ret));
+        return EXIT_FAILURE;
+    }
 
     // WAIT FOR THE THREADS TO FINISH
+    if ((ret = pthread_join(mainThread, NULL)) == -1) {
+        fprintf(stderr, "ERROR - %d (%s) -\n", ret, strerror(ret));
+        return EXIT_FAILURE;
+    }
 
-    
+    printf("[NOTE]     backup finished!\n\n");
 
     return 0;
 }
