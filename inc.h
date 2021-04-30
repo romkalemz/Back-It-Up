@@ -23,7 +23,7 @@ int checkArgInput(int, char**);
 int checkBackupDir(int);
 
 // TRAVERSE FILES FUNCTIONS
-void traverse(char* path);
+void *traverse(void *path);
 int isFile(char* pathname);
 int isDirectory(char* pathname);
 int checkPermissions(char* pathname);
